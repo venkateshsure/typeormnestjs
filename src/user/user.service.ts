@@ -28,6 +28,7 @@ export class UserService {
   }
 
   remove(id: number) {
+    console.log(id)
     return this.userRepository.delete(id);
   }
 }

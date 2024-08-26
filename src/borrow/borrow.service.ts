@@ -24,13 +24,17 @@ export class BorrowService {
     return borrowRecord;
   }
 
-  async returnBook(borrowId: number) {
+  async returnBook(borrowId: number,userId:number,bookId:number) {
+    console.log(borrowId,"---------")
     const borrowRecord = await this.borrowRepository.findOne({ where: { id: borrowId } });
+    //console.log(borrowRecord,"borrowRecord")
     if (borrowRecord && !borrowRecord.isReturned) {
       borrowRecord.isReturned = true;
       borrowRecord.returnDate = new Date();
+      
       await this.borrowRepository.save(borrowRecord);
-      await this.auditLogService.logAction(borrowRecord.user.id, 'return', 'book', borrowRecord.book.id);
+      console.log(borrowRecord,"jjjj")
+      await this.auditLogService.logAction(userId, 'return', 'book',bookId);
       return borrowRecord;
     }
     return null;

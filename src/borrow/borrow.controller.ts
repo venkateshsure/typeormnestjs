@@ -11,7 +11,8 @@ export class BorrowController {
   }
 
   @Post('return/:id')
-  returnBook(@Param('id', ParseIntPipe) borrowId: number) {
-    return this.borrowService.returnBook(borrowId);
+  returnBook(@Param('id', ParseIntPipe) borrowId: number,@Body('userId', ParseIntPipe) userId: number, 
+  @Body('bookId', ParseIntPipe) bookId: number) {
+    return this.borrowService.returnBook(borrowId,userId,bookId); 
   }
 }

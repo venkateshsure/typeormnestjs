@@ -14,3 +14,4 @@ export class Test {
   @Column({ default: true })
   isActive: boolean;
 }
+

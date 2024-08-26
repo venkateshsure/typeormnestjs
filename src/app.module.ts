@@ -4,15 +4,22 @@ import { AppService } from './app.service';
 
 import { TestModule } from './test/test.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Test } from '@nestjs/testing';
+
+
+import { UserModule } from './user/user.module';
+import { BookModule } from './book/book.module';
+import { BorrowModule } from './borrow/borrow.module';
+import {AuditLogModule} from './auditlog/auditlog.module'
+import { AuthorModule } from './author/author.module';
+
 
 @Module({
-  imports: [TestModule,TypeOrmModule.forRoot({
+  imports: [TestModule,UserModule,TypeOrmModule.forRoot({
     type: 'sqlite',
-    database: 'test',
-    entities: [Test],
+    database: 'testDB',
+    entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true,
-  }),],
+  }), AuthorModule, AuditLogModule, BorrowModule, BookModule],
   controllers: [AppController],
   providers: [AppService],
 })

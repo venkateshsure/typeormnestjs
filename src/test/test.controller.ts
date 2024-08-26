@@ -1,7 +1,6 @@
-import { Controller,Get, Post, Param,Body, Put,Delete} from '@nestjs/common';
+import { Controller,Get, Post, Param,Body, Put,Delete,ParseIntPipe} from '@nestjs/common';
 import { TestService } from './test.service';
-import { Test } from '@nestjs/testing';
-
+import { Test } from './test.entity'
 
 @Controller('test')
 export class TestController {
@@ -13,7 +12,7 @@ export class TestController {
   }
 
   @Get(':id')
-  async findOne(@Param() id:number):Promise<Test>{
+  async findOne(@Param('id', ParseIntPipe) id:number):Promise<Test>{
     return await this.testService.findOne(id)
   }
 
@@ -22,13 +21,12 @@ export class TestController {
     return await this.testService.create(todo)
   }
   @Delete(':id')
-  async delete(@Param() id:number):Promise<void>{
+  async delete(@Param('id', ParseIntPipe) id:number):Promise<void>{
      await this.testService.remove(id)
   }
 
-  /* @Put()
-        async update(@Param() id:number):Promise<Test>{
-        return await this.testService.update(id)
-        }  
-  */
+  @Put(':id')
+  async update(@Param('id', ParseIntPipe) id: number,@Body('isActive') isActive: boolean): Promise<Test | null> {
+    return await this.testService.update(id, isActive);
+  }
 }

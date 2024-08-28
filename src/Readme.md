@@ -1,33 +1,34 @@
 //USER CRUD OPERATION
-/* GET ALL USER */
+/*GET ALL USER*/
 http://localhost:3000/users
 
-/* CREATE USERS */
+/*CREATE USERS*/
 http://localhost:3000/users
 body:
     {
         username:"venkatesh"
     }
 
-/* Edit USER */
+/*Edit USER*/
 http://localhost:3000/users/:userId
 body:
     {
         username:new user
     }
 
-/* DELETE USER */
+/*DELETE USER*/
 http://localhost:3000/users/:userId
 NOTE:-
     Due to Foreign Key constraint the delete operation was not performed
 
-/////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////
 //BOOK CRUD OPERATION
 
-/* GET ALL BOOKS */
+/*GET ALL BOOKS*/
 http://localhost:3000/books
 
-/* CREATE BOOKS */
+/*CREATE BOOKS*/
 http://localhost:3000/books
 {
     "title": "The Great Gatsby",
@@ -36,36 +37,38 @@ http://localhost:3000/books
     }
 }
 
-/* EDIT BOOKS */
+/*EDIT BOOKS*/
 http://localhost:3000/books/:booksId
 {
     username:new user
 }
 
-///////////////////////////
-AUTHOR CRUD OPERATION
+///////////////////////////////////
+/*AUTHOR CRUD OPERATION*/
 
-/* GET AUTHORS */
+/*GET AUTHORS*/
 http://localhost:3000/authors
 
-/* CREATE AUTHORS */
+/*CREATE AUTHORS*/
 http://localhost:3000/authors
 {
   "name": "Thomas edison"
 
 }
 
-/* UPDATE AUTHORS */
+/*UPDATE AUTHORS*/
 http://localhost:3000/authors/:authorId
 
-//////////////
-AUDIT LOGS
 
-/* GET AUDIT LOGS */
+
+///////////////////////////////////////
+/*AUDIT LOGS*/
+
+/*GET AUDIT LOGS*/
 http://localhost:3000/auditlogs
 
-////////////////
-/* CREATE BORROWINGS */
+////////////////////////////////////
+/*CREATE BORROWINGS*/
 
 http://localhost:3000/borrow/borrow
 {
@@ -73,7 +76,7 @@ http://localhost:3000/borrow/borrow
   "bookId":334
 }
 
-/*RETURN BORROWINGS */
+/*CREATE RETURN BORROWINGS POST REQUEST*/
 http://localhost:3000/borrow/return/:borrowId
 {
   "userId":4,

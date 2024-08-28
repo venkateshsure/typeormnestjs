@@ -6,12 +6,16 @@ import { AuditLogService } from "src/auditlog/auditlog.service";
 
 @Injectable()
 export class BorrowService {
+  
   constructor(
     @InjectRepository(BorrowRecord)
     private readonly borrowRepository: Repository<BorrowRecord>,
     private readonly auditLogService: AuditLogService,
   ) {}
 
+    getBorrowRecord() {
+      return this.borrowRepository.find();
+    }
   async borrowBook(userId: number, bookId: number) {
     const borrowRecord = this.borrowRepository.create({
       user: { id: userId },

@@ -27,7 +27,7 @@ export class UserService {
     return this.findOne(id);
   }
 
-  remove(id: number) {
-    return this.userRepository.delete(id);
+  async remove(id: number) {
+    return await this.userRepository.delete(id);
   }
 }

@@ -6,7 +6,6 @@ import { AuditLogService } from "src/auditlog/auditlog.service";
 
 @Injectable()
 export class BorrowService {
-  
   constructor(
     @InjectRepository(BorrowRecord)
     private readonly borrowRepository: Repository<BorrowRecord>,
@@ -42,5 +41,9 @@ export class BorrowService {
       return borrowRecord;
     }
     return null;
+  }
+
+  async deleteBorrow(id: number) {
+    return await this.borrowRepository.delete(id)
   }
 }

@@ -15,7 +15,7 @@ export class AuditLog {
   entity: string;
 
   @Column()
-  entityId: number;
+  bookId: number;
 
   @CreateDateColumn()
   timestamp: Date;

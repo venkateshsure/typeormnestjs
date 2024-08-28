@@ -29,7 +29,8 @@ export class AuthorService {
     return this.findOne(id);
   }
 
-  remove(id: number) {
-    return this.authorRepository.delete(id);
+  async remove(id: number) {
+    console.log(id,"authorId");
+    return await this.authorRepository.delete(id);
   }
 }

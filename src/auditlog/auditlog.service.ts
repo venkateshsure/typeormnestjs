@@ -10,12 +10,12 @@ export class AuditLogService {
     private readonly auditLogRepository: Repository<AuditLog>,
   ) {}
 
-  async logAction(userId: number, action: string, entity: string, entityId: number) {
+  async logAction(userId: number, action: string, entity: string, bookId: number) {
     const log = this.auditLogRepository.create({
       userId,
       action,
       entity,
-      entityId,
+      bookId,
     });
     await this.auditLogRepository.save(log);
   }

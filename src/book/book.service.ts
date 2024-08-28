@@ -27,7 +27,8 @@ export class BookService {
     return this.findOne(id);
   }
 
-  remove(id: number) {
-    return this.bookRepository.delete(id);
+  async remove(id: number) {
+    console.log(id,"bookid")
+    return await this.bookRepository.delete(id);
   }
 }
